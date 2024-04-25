@@ -24,7 +24,7 @@ class Craft {
         picture.id = "picture";
 
         const site_image = document.createElement("img");
-        site_image.src = "crafts/" + this.img;
+        site_image.src = this.img;
 
         const name_and_options = document.createElement("div");
         name_and_options.id = "name-and-options";
@@ -108,7 +108,7 @@ const showCrafts = async () => {
         let val = crafts.length;
         crafts.push(new Craft(craft.name, craft.image, craft.description, craft.supplies, craft.id, craft._id));
 
-        craftImg.src = "crafts/" + crafts[val].img;
+        craftImg.src = crafts[val].img;
         craftImg.onclick = () => changeModal(crafts[val]);
         if (a == 0) {
             craftCol1.append(craftImg);
@@ -125,7 +125,6 @@ const showCrafts = async () => {
         }
         
     });
-    console.log(crafts);
 };
 
 const getJSON = async () => {
@@ -232,7 +231,7 @@ const editCraft = (e) => {
 const popEdit = (e) => {
     const form = document.getElementById("make-changes");
     const formImage = document.getElementById("upload_image");
-    formImage.src = "crafts/" + e.img;
+    formImage.src = e.img;
     form.image.src = e.img;
     form.name.value = e.name;
     form.description.value = e.description;

@@ -3,22 +3,22 @@ const app = express();
 const joi = require("joi");
 const multer = require("multer");
 app.use(express.static("public"));
-app.use("/crafts", express.static("crafts"));
+app.use("/public/crafts", express.static("crafts"));
 app.use(express.json());
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 app.use(cors());
 
-/*const storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, ".uploads/");
+        cb(null, "public/crafts/");
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
     },
-});*/
+});
 
-const upload = multer({dest: __dirname + "/public/crafts" });
+const upload = multer({ storage: storage });
 
 mongoose
     .connect("mongodb+srv://japowers:RUD1IMizJvcIr6Q4@data.wtiy9yq.mongodb.net/?retryWrites=true&w=majority&appName=Data")
@@ -70,7 +70,7 @@ app.post("/api/crafts", upload.single("image"), (req, res) => {
     })
 
     if (req.file) {
-        craft.image = req.file.filename;
+        craft.image = "crafts/" + req.file.filename;
     }
 
     createCraft(res, craft);
@@ -102,7 +102,7 @@ const updateCraft = async (req, res) => {
     }
 
     if (req.file) {
-        fieldsToUpdate.image = req.file.filename;
+        fieldsToUpdate.image = "crafts/" + req.file.filename;
     }
 
     const result = await Craft.updateOne({id:req.params.id}, fieldsToUpdate);
@@ -110,7 +110,6 @@ const updateCraft = async (req, res) => {
 }
 
 app.delete("/api/crafts/:_id", (req, res) => {
-    console.log(req.params._id);
     deleteCraft(res, req.params._id);
 });
 
