@@ -1,15 +1,15 @@
 let src = "https://csce242-assignment18-iqe2.onrender.com/";
-//let src = "localhost:3000/"
 let crafts = [];
 let mode = "";
 
 class Craft {
-    constructor(name, img, description, supplies, id) {
+    constructor(name, img, description, supplies, id, _id) {
         this.name = name;
         this.img = img;
         this.description = description;
         this.supplies = supplies;
         this.id = id;
+        this._id = _id;
     }
 
 
@@ -106,7 +106,7 @@ const showCrafts = async () => {
         let craftImg = document.createElement("img");
         craftImg.classList.add("craft-item");
         let val = crafts.length;
-        crafts.push(new Craft(craft.name, craft.image, craft.description, craft.supplies, craft.id));
+        crafts.push(new Craft(craft.name, craft.image, craft.description, craft.supplies, craft.id, craft._id));
 
         craftImg.src = "crafts/" + crafts[val].img;
         craftImg.onclick = () => changeModal(crafts[val]);
@@ -125,11 +125,12 @@ const showCrafts = async () => {
         }
         
     });
-
+    console.log(crafts);
 };
 
 const getJSON = async () => {
     try {
+        console.log(src + "api/crafts");
         let response = await fetch(src + "api/crafts");
         return await response.json();
     } catch(error) {
@@ -261,18 +262,15 @@ const delCraft = (e) => {
     }
 }
 
-const confirmDelete = () => {
-
-}
-
 const permDelete = async (e) => {
-    console.log(`Deleting ${e.name} Permanantly`);
-    let response = await fetch(`/api/crafts/${e.id}`, {
+    console.log(`Deleting ${e.name} ${e._id} Permanantly`);
+    let response = await fetch(`/api/crafts/${e._id}`, {
         method:"DELETE",
         headers: {
-            "Content-Type":"application/json;charset=utf-8"
+            "Content-Type":"application/json;"
         }
     });
+    
 
     if (response.status != 200) {
         console.log("Error Deleting");
