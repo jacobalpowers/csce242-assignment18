@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    color: #444A4C;
+    background-color: salmon;
+    /*margin: 0px;*/
+}
+
+body {
+    margin: 0;
+    background-color: papayawhip;
+}
+h1 {
+    text-align: center;
+    margin: 5px;
+}
+h1 a {
+    color: red;
+    border: solid red 2px;
+    text-decoration: none;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#make-changes {
+    display: flex;
+    flex-direction: row;
+}
+#image-interaction {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+#image-interaction img {
+    padding: 10px;
+    width: 200px;
+    height: 300px;
+}
+
+#text-interaction {
+    display: flex;
+    flex-direction: column;
+}
+#buttons {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#supplies-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+#crafts-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 1%;
+}
+.column {
+    flex: 25%;
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+.column img {
+    width: 100%;
+    margin-top: 20px;
+    vertical-align: middle;
+}
+
+
+
+.w3-modal {
+    display: none;
+    z-index: 3;
+    padding-top: 100px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.w3-modal-content {
+    margin: auto;
+    background-color: #fff;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    width: 70%;
+}
+.w3-container {
+    padding: 0.01em 16px;
+}
+.w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.w3-display-topright {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#more-details {
+    display: flex;
+    justify-content: left;
+}
+#text {
+    padding-left: 10px;
+}
+#more-details h2{
+    margin-top: 20px;
+    font-weight: bold;
+}
+#text ul {
+    padding-left: 30px;
+}
+#picture {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    max-width: 50%;
+}
+#more-details img {
+    height: auto;
+    width: 100%;
+    padding-left: 10px;
+}
+#name-and-options {
+    display: flex;
+    flex-direction: row;
+}
+#name-and-options p {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+  /* Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Server Edit and Delete</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Assignment 17</h1>
+            <h2>Server Edit and Delete</h2>
+        </header>
+        <h1>Buy & Sell Crafts <a href="#" id="add-item">+</a></h1>
+
+        <div id="id02" class="w3-modal">
+            <div class="w3-modal-content">
+                <div id="comp-modal" class="w3-container">
+                    <span onclick="resetNewCraft()"
+                            class="w3-button w3-display-topright">&times;</span>
+                    <form id="make-changes" enctype="multipart/form-data">
+                        <div id="image-interaction">
+                            <img src="crafts/blank.gif" id="upload_image">
+                            <input type="file" id="image" name="image" accept="image/*">
+                        </div>
+                        <div id="text-interaction">
+                            <h2>Make Changes to your Craft</h2>
+                            <p>
+                                <label for="name">Recipe Name: </label>
+                                <input type="text" id="name" name="name" required />
+                            </p>
+                            <p>
+                                <label for="description">Description: </label>
+                                <input type="description" id="description" name="description" required />
+                            </p>
+                            <div>
+                                <label for="Supplies">Supplies: </label>
+                                <button id="add-supplies">Add Supply</button>
+                                <div id="supplies-list"></div>
+                            </div>
+                            <input type="hidden" id="id" name="id">
+                            <div id="buttons">
+                                <button type="reset">Cancel</button>
+                                <button type="submit">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content">
+                <div id="comp-modal" class="w3-container">
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                    <section id="more-details"></section>
+                </div>
+            </div>
+        </div>
+        <div id="crafts-list"></div>
+        
+    </body>
+</html>
